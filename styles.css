@@ -34,3 +34,7 @@ textarea, #results {
   margin: 0;
   padding: 0;
 }
+
+#results-list li.error {
+  color: #cc6666;
+}
