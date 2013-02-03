@@ -24,7 +24,12 @@ window.onload = function() {
     try {
       results = (new Function(editor.getValue()))();
     } catch(error) {
-      results.lineNumber = (error.lineNumber - 24) || parseInt(error.stack.split('\n')[1].split(',').pop().replace(')', '').split(':')[1]) - 1;
+      if (error.lineNumber) {
+        results.lineNumber = error.lineNumber - 24;
+      }
+      else {
+        results.lineNumber = parseInt(error.stack.split('\n')[1].split(',').pop().replace(')', '').split(':')[1]) - 1;
+      }
     }
 
     if(results instanceof Array) {
