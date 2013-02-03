@@ -24,6 +24,8 @@ window.onload = function() {
     try {
       results = (new Function(editor.getValue()))();
     } catch(error) {
+      results = error;
+      
       if (error.lineNumber) {
         results.lineNumber = error.lineNumber - 24;
       }
